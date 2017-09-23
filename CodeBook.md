@@ -105,7 +105,8 @@ according to subject and activity performed
 ## Information regarding the cleaning of the data
 
 * `data.table` was used for faster selection of columns by using a 
-logical vector (`index_mean_sd`).
+logical vector (`index_mean_sd`). It was also used to import the 
+larger data sets much faster.
 * `stringr` and `dplyr` was used in order to shorten 
 the steps in detecting the patterns subsetting the data 
 based on the patterns. These packages were also used to 
