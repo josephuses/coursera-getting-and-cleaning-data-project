@@ -5,17 +5,16 @@ library(tidyr)
 library(stringr)
 
 ## download and unzip the data sets
-if(!file.exists("./data")){
-  dir.create("./data")
+if(!file.exists("FUCIHARDataset.zip")){
   url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
-  download.file(url, destfile="./data/FUCIHARDataset.zip", method = "curl")
-  unzip("./data/FUCIHARDataset.zip", exdir = "./data")
+  download.file(url, destfile="FUCIHARDataset.zip", method = "curl")
+  unzip("FUCIHARDataset.zip")
 }
 
 ## Load activity labels and features
 
-activity_labels <- read.table("./data/UCI HAR Dataset/activity_labels.txt")
-features <- read.table("./data/UCI HAR Dataset/features.txt")
+activity_labels <- read.table("UCI HAR Dataset/activity_labels.txt")
+features <- read.table("UCI HAR Dataset/features.txt")
 # Extract all features that contain the strings "mean" and "std"
 # removing the patterns "-" and "()" from the measurement names
 mean_sd_pattern <- ".*mean.*|.*std.*"
@@ -27,18 +26,18 @@ features_mean_std <- features[,2] %>%
 
 # Load the datasets
 
-x_train <- fread("./data/UCI HAR Dataset/train/X_train.txt")
+x_train <- fread("UCI HAR Dataset/train/X_train.txt")
 x_train <- x_train[ , c(index_mean_sd), with = FALSE]
-y_train <- fread("./data/UCI HAR Dataset/train/y_train.txt")
-subject_train <- fread("./data/UCI HAR Dataset/train/subject_train.txt")
+y_train <- fread("UCI HAR Dataset/train/y_train.txt")
+subject_train <- fread("UCI HAR Dataset/train/subject_train.txt")
 
 # merge training data set
 train <- cbind(subject_train, y_train, x_train)
 
-x_test <- fread("./data/UCI HAR Dataset/test/X_test.txt")
+x_test <- fread("UCI HAR Dataset/test/X_test.txt")
 x_test <- x_test[ , c(index_mean_sd), with = FALSE]
-y_test <- fread("./data/UCI HAR Dataset/test/y_test.txt")
-subject_test <- fread("./data/UCI HAR Dataset/test/subject_test.txt")
+y_test <- fread("UCI HAR Dataset/test/y_test.txt")
+subject_test <- fread("UCI HAR Dataset/test/subject_test.txt")
 test <- cbind(subject_test, y_test, x_test)
 
 # merge datasets and add labels

@@ -2,7 +2,7 @@
 
 The R script, `run_analysis.R` does the following:
 
-1. Downloads, unzips, and stores the data into the subdirectory `"./data"`.
+1. Downloads, unzips, and stores the data.
 2. Loads the information about the activities and measurements, retaining only those that contain information about the means and standard deviations for each measurement.
 3. Merges the training and the test sets to create one data set.
 4. Uses descriptive activity names to name the activities in the data set.
