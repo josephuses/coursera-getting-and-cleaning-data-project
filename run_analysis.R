@@ -60,4 +60,4 @@ tidy <- long_data %>%
   spread(variable, mean)
 
 # write the output to an external file "tidy.txt"
-readr::write_csv(tidy, "tidy.txt")
+write.table(tidy, "tidy.txt", row.name = FALSE, sep=",")
